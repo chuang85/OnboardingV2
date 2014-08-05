@@ -1,0 +1,78 @@
+﻿<section>
+    <!--Back link-->
+    <div>
+        <h3><a class="pointerLink" data-bind="click: goBack">< Back</a></h3>
+    </div>
+    <form class="form-horizontal" role="form">
+        <!--RequestSubject-->
+        <div class="form-group">
+            <label for="requestSubject" class="col-sm-2 control-label">RequestSubject</label>
+            <div class="col-sm-6">
+                <p class="form-control-static" id="requestSubject" data-bind="text: request().RequestSubject"/>
+            </div>
+        </div>
+        <!--Modified-->
+        <div class="form-group">
+            <label for="modified" class="col-sm-2 control-label">Modified</label>
+            <div class="col-sm-6">
+                <p class="form-control-static" id="modified" data-bind="text: request().DisplayModifiedDate" />
+            </div>
+        </div>
+        <!--Created-->
+        <div class="form-group">
+            <label for="created" class="col-sm-2 control-label">Created</label>
+            <div class="col-sm-6">
+                <p class="form-control-static" id="created" data-bind="text: request().DisplayCreatedDate" />
+            </div>
+        </div>
+        <!--CreatedBy-->
+        <div class="form-group">
+            <label for="createdBy" class="col-sm-2 control-label">CreatedBy</label>
+            <div class="col-sm-6">
+                <a id="createdBy" data-bind="attr: { href: 'https://who/is/' + $root.removeDomain(request().CreatedBy()) }">
+                    <span class="form-control-static" id="CreatedBy" data-bind="text: request().CreatedBy"></span>
+                </a>
+            </div>
+        </div>
+        <!--Type-->
+        <div class="form-group">
+            <label for="type" class="col-sm-2 control-label">Type</label>
+            <div class="col-sm-6">
+                <p class="form-control-static" id="type" data-bind="text: request().Type" />
+            </div>
+        </div>
+        <!--State-->
+        <div class="form-group">
+            <label for="state" class="col-sm-2 control-label">State</label>
+            <div class="col-sm-6">
+                <p class="form-control-static" id="state" data-bind="text: request().State" />
+            </div>
+        </div>
+        <!--SPT-->
+        <div class="form-group">
+            <div class="panel-group" id="view-spt">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title env-title">
+                            <a data-toggle="collapse" href="#viewSpt">View Service Principal Template</a>
+                        </h4>
+                    </div>
+                    <div id="viewSpt" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <span data-bind="text: request().TempXmlStore"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Cancel button-->
+        <div class="form-group form-bottom">
+            <div class="col-xs-offset-4 col-xs-4">
+                <div style="margin: 0px auto 10px; max-width: 300px;">
+                    <button id="submit-btn" class="btn btn-danger btn-block cancel-request-btn" data-bind="click: cancelRequest">Cancel Request</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</section>

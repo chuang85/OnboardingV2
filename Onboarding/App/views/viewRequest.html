@@ -1,0 +1,58 @@
+﻿<section>
+    <h2 class="page-header">View Request</h2>
+    <!--Search area-->
+    <div class="jumbotron">
+        <label for="filter">Find a Request</label>
+        <input class="form-control" type="search" id="filter" data-bind="value: filterText, valueUpdate: 'afterkeydown'"
+               placeholder="app name" />
+    </div>
+    <br />
+    <!--List all requests-->
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>RequestId</th>
+                    <th>RequestSubject</th>
+                    <th>Modified</th>
+                    <th>Created</th>
+                    <th>CreatedBy</th>
+                    <th>Type</th>
+                    <th>State</th>
+                    <th>
+                        <button class="btn btn-default" data-bind="click: refresh"><span class="pointerLink glyphicon glyphicon-refresh"></span></button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: requests">
+                <tr>
+                    <td>
+                        <span id="RequestId" data-bind="text: RequestId"></span>
+                    </td>
+                    <td>
+                        <a data-bind="attr: { href: '#request/detail/' + RequestId() }">
+                            <span id="displayName" data-bind="text: RequestSubject"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <span id="ModifiedDate" data-bind="text: DisplayModifiedDate"></span>
+                    </td>
+                    <td>
+                        <span id="CreatedDate" data-bind="text: DisplayCreatedDate"></span>
+                    </td>
+                    <td>
+                        <a data-bind="attr: { href: 'https://who/is/' + $root.removeDomain(CreatedBy()) }">
+                            <span id="CreatedBy" data-bind="text: CreatedBy()"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <span id="Type" data-bind="text: Type"></span>
+                    </td>
+                    <td>
+                        <span id="State" data-bind="text: State"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
