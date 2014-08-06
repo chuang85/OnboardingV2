@@ -13,5 +13,7 @@ namespace Onboarding.Models
         public string TaskSetId { get; set; }
 
         public string TaskSetName { get; set; }
+
+        public bool AppOnly { get; set; }
     }
 }

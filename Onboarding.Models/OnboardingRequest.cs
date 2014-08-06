@@ -1,19 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Onboarding.Models
 {
-    public class OnboardingRequest
+    public class OnboardingRequestMetadata
     {
         [Key]
         public int RequestId { get; set; }
-
-        // Need this?
-        [Required]
-        public string RequestSubject { get; set; }
-
-        public string TempXmlStore { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
@@ -28,10 +23,6 @@ namespace Onboarding.Models
 
         public RequestState State { get; set; }
 
-        public RequestType Type { get; set; }
-
-        public byte[] Blob { get; set; }
-
         public string CodeFlowId { get; set; }
 
         public int ChangelistNumber { get; set; }
@@ -39,6 +30,33 @@ namespace Onboarding.Models
         public int BuildNumber { get; set; }
 
         public int RTONumber { get; set; }
+    }
+
+    public class OnboardingRequest : OnboardingRequestMetadata
+    {
+        public string DisplayName { get; set; }
+
+        public bool NeedS2S { get; set; }
+
+        public bool NeedGraph { get; set; }
+
+        public Spt Spt { get; set; }
+    }
+
+    public class Spt
+    {
+        public Guid AppPrincipalId { get; set; }
+
+        public Guid KeyGroupId { get; set; }
+
+        public virtual ICollection<TaskSet> TaskSets { get; set; }
+
+        public bool ManagedInternally { get; set; }
+
+        public bool ExternalUserAccountDelegationsAllowed { get; set; }
+
+        public virtual ICollection<string> ConstrainedDelegationTo { get; set; }
+
     }
 
     public enum RequestType

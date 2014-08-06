@@ -29,6 +29,7 @@
             goBack: goBack,
             addItem: addItem,
             advancedToggle: advancedToggle,
+            attached: attached,
 
             /* descripstions */
             descContact: ko.observable(),
@@ -49,6 +50,14 @@
 
         // Prevent metaData not fetched exception
         var metaDataFetched = false;
+
+        function attached() {
+            $('input')
+                    .popover({ title: $(this).attr('id'), content: "It's so simple to create a tooltop for my website!" })
+                    .blur(function () {
+                        $(this).popover('hide');
+                    });
+        }
 
         function activate() {
             clearInputOnloading();
@@ -95,9 +104,9 @@
                 var newOnboardingRequest = manager.
                     createEntity('OnboardingRequest:#Onboarding.Models',
                     {
-                        CreatedBy: vm.contact(),
-                        RequestSubject: vm.requestSubject(),
-                        TempXmlStore: xmlString,
+                        //CreatedBy: vm.contact(),
+                        //RequestSubject: vm.requestSubject(),
+                        //TempXmlStore: xmlString,
                         Type: vm.requestType(),
                         State: RequestState.Created
                     });
